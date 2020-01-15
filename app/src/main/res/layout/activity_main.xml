@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    android:background="@color/colorPrimary"
+<RelativeLayout android:background="@color/colorPrimary"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,9 +11,9 @@
     <TextView
         android:layout_centerHorizontal="true"
         android:textSize="36sp"
-        android:text="Counter"
-
-        android:id="@+id/counterText"
+        android:id="@+id/stopWatch_text"
+        android:text="00:00"
+        android:textColor="#000"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
@@ -25,23 +23,35 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/wordsGrid"
-        android:layout_below="@id/counterText"/>
+        android:layout_below="@id/stopWatch_text" />
 
 
 
     <TextView
-        android:layout_centerHorizontal="true"
-        android:textSize="48sp"
-        android:text="00:00"
+        android:id="@+id/score"
+        android:layout_below="@id/wordsGrid"
+        android:layout_alignParentRight="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/stopwatch"
-        android:layout_below="@id/wordsGrid"></TextView>
+        android:padding="10dp"
+        android:text="Score : 0"
+        android:textColor="#FFF"
+        android:textSize="28sp">
+
+    </TextView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/wordsGrid"
+        android:background="#fff">
+
+    </View>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_below="@id/stopwatch"
+        android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_below="@id/score"
         android:id="@+id/wordListRecyclerView">
 
     </androidx.recyclerview.widget.RecyclerView>
