@@ -2,7 +2,9 @@ package com.siv.wordsearch20;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.graphics.Paint;
 import android.os.AsyncTask;
@@ -32,6 +34,11 @@ public class MainActivity extends AppCompatActivity {
 
     public List<String> wordsFound;
     int score = 0 ;
+
+    public RecyclerView wordsRecyclerView;
+    public WordAdapter wordAdapter;
+
+
     private char[][] letters  = {
 
             //FromRow, FromColoumn, ToRow, ToColoumn
@@ -68,6 +75,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         wordsFound = new ArrayList<String>();
+        wordsRecyclerView = findViewById(R.id.wordListRecyclerView);
+        wordsRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(3, LinearLayoutManager.VERTICAL));
+
+        wordAdapter = new WordAdapter((ArrayList<String>) wordsFound, this);
+        wordsRecyclerView.setAdapter(wordAdapter);
 
         TextView counterText = (TextView) findViewById(R.id.counterText);
         TextView stopwatchText = findViewById(R.id.stopwatch);
@@ -100,7 +112,6 @@ public class MainActivity extends AppCompatActivity {
                 new Word("KOTLIN", false, 3, 8, 8, 8),
                 new Word("MOBILE", false, 2,1,7,1),
                 new Word("VARIABLE", false, 9, 2, 9, 9));
-              //  new Word("VARIABLE", false, 1, 2, 1, 8),
 
         //letterArray.get(random)
         wordsGrid.setLetters(letters);
@@ -109,8 +120,20 @@ public class MainActivity extends AppCompatActivity {
         wordsGrid.setOnWordSearchedListener(new Grid.OnWordSearchedListener() {
             @Override
             public void wordFound(String word) {
-                Toast.makeText(MainActivity.this, word + " found", Toast.LENGTH_SHORT).show();
 
+                if (wordsFound.contains(word)) {
+                    Toast.makeText(MainActivity.this, word + " found : " + wordsFound.indexOf(word), Toast.LENGTH_SHORT).show();
+                    score++;
+                    Log.d("TAG", "wordFound: REMOVE INDEX : " + wordsFound.indexOf(word));
+                    wordsFound.remove(wordsFound.indexOf(word));
+                    wordAdapter.notifyDataSetChanged();
+
+                }
+                
+                if (score == 6) {
+                    stopwatch.stop();
+                    Toast.makeText(MainActivity.this, "YOU ARE DONE!", Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
