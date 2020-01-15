@@ -1,32 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
+    android:background="@color/colorPrimary"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="#00649C"
-        tools:ignore="Suspicious0dp">
-        <TextView
-            android:id="@+id/tv_strikethrough"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Strikethrough"
-            android:textColor="@android:color/black"/>
-    </FrameLayout>
+    <TextView
+        android:layout_centerHorizontal="true"
+        android:textSize="36sp"
+        android:text="Counter"
+
+        android:id="@+id/counterText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </TextView>
 
     <com.siv.wordsearch20.GridView.Grid
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/wordsGrid"/>
+        android:id="@+id/wordsGrid"
+        android:layout_below="@id/counterText"/>
 
 
-</LinearLayout>
+
+    <TextView
+        android:layout_centerHorizontal="true"
+        android:textSize="48sp"
+        android:text="00:00"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/stopwatch"
+        android:layout_below="@id/wordsGrid"></TextView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@id/stopwatch"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/wordListRecyclerView">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+</RelativeLayout>

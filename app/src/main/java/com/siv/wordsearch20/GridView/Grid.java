@@ -2,6 +2,7 @@ package com.siv.wordsearch20.GridView;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
@@ -42,7 +43,7 @@ public class Grid extends View {
 
         textPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         textPaint.setSubpixelText(true);
-        textPaint.setColor(0xcc000000);
+        textPaint.setColor(Color.WHITE);
         textPaint.setTextSize(70);
         textPaint.setTextAlign(Paint.Align.LEFT);
 
@@ -50,13 +51,13 @@ public class Grid extends View {
         highlighterPaint.setStyle(Paint.Style.STROKE);
         highlighterPaint.setStrokeWidth(110);
         highlighterPaint.setStrokeCap(Paint.Cap.ROUND);
-        highlighterPaint.setColor(0x4400649C);
+        highlighterPaint.setColor(0x44ffd900);
 
         gridLinePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         gridLinePaint.setStyle(Paint.Style.STROKE);
         gridLinePaint.setStrokeWidth(4);
         gridLinePaint.setStrokeCap(Paint.Cap.SQUARE);
-        gridLinePaint.setColor(0x11000000);
+        gridLinePaint.setColor(Color.BLACK);
     }
 
     @Override
@@ -87,7 +88,7 @@ public class Grid extends View {
         // Highlighter
         if(cellDragFrom != null && cellDragTo != null && isFromToValid(cellDragFrom, cellDragTo)) {
             canvas.drawLine(cellDragFrom.getRect().centerX(), cellDragFrom.getRect().centerY(),
-                    cellDragTo.getRect().centerX() + 1, cellDragTo.getRect().centerY(), highlighterPaint);
+                    cellDragTo.getRect().centerX(), cellDragTo.getRect().centerY(), highlighterPaint);
         }
 
         for(Word word : words) {
@@ -95,7 +96,7 @@ public class Grid extends View {
                 canvas.drawLine(
                         cells[word.getFromRow()][word.getFromColumn()].getRect().centerX(),
                         cells[word.getFromRow()][word.getFromColumn()].getRect().centerY(),
-                        cells[word.getToRow()][word.getToColumn()].getRect().centerX() + 1,
+                        cells[word.getToRow()][word.getToColumn()].getRect().centerX(),
                         cells[word.getToRow()][word.getToColumn()].getRect().centerY(), highlighterPaint);
             }
         }
@@ -198,6 +199,7 @@ public class Grid extends View {
     }
 
     public void setWords(Word... words) {
+
         this.words = words;
     }
 
