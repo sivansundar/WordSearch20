@@ -3,6 +3,8 @@ package com.siv.wordsearch20;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -12,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.siv.wordsearch20.GridView.Grid;
 import com.siv.wordsearch20.Model.Word;
 import com.siv.wordsearch20.StopWatch.StopWatch;
@@ -50,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
             {'A', 'M', 'C', 'D', 'E', 'T', 'M', 'J', 'I', 'J'},// 2
             {'A', 'O', 'A', 'W', 'L', 'O', 'E', 'S', 'K', 'J'},// 3
             {'A', 'B', 'C', 'M', 'B', 'C', 'W', 'V', 'O', 'J'},// 4
-            {'A', 'I', 'N', 'I', 'A', 'I', 'A', 'L', 'T', 'J'},// 5
+            {'A', 'I', 'N', 'I', 'T', 'I', 'A', 'L', 'T', 'J'},// 5
             {'A', 'L', 'L', 'I', 'F', 'N', 'I', 'H', 'L', 'J'},// 5
             {'N', 'E', 'V', 'T', 'E', 'B', 'P', 'V', 'I', 'J'},// 7
             {'A', 'E', 'C', 'S', 'O', 'M', 'A', 'Z', 'N', 'J'},// 8
@@ -181,6 +184,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void wordFound(String word) {
 
+
                 if (wordsFound.contains(word)) {
 
                     Toast.makeText(MainActivity.this, word + " found : " + wordsFound.indexOf(word), Toast.LENGTH_SHORT).show();
@@ -191,12 +195,17 @@ public class MainActivity extends AppCompatActivity {
                     wordAdapter.notifyDataSetChanged();
 
                 }
-                
-                if (score == 6) {
+
+                if (score == 2) {
                     stopwatch.stop();
-                    AlertDialog.Builder scoreDialogBuilder = new AlertDialog.Builder(MainActivity.this);
+
+                    final View dialogView = LayoutInflater.from(MainActivity.this).inflate(R.layout.custom_md_alertdialog, null);
+
+                    MaterialAlertDialogBuilder scoreDialogBuilder = new MaterialAlertDialogBuilder(MainActivity.this);
                     scoreDialogBuilder.setTitle("Congratulations!");
+                    scoreDialogBuilder.setView(dialogView);
                     scoreDialogBuilder.setMessage("You took " + stopwatchText.getText().toString() + " to complete searching.");
+
                     scoreDialogBuilder.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
