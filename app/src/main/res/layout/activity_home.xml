@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context=".HomeActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:orientation="vertical">
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/play_btn"
+            android:layout_width="180dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center_horizontal"
+            android:text="Play"
+            android:textColor="#000"
+            app:backgroundTint="@color/colorAccent">
+
+        </com.google.android.material.button.MaterialButton>
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/instructions_btn"
+            android:layout_width="180dp"
+            android:layout_height="70dp"
+            android:layout_below="@id/play_btn"
+            android:layout_gravity="center_horizontal"
+            android:text="Instructions"
+            android:textColor="#000"
+            app:backgroundTint="@color/colorAccent">
+
+        </com.google.android.material.button.MaterialButton>
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/leaderboard_btn"
+            android:layout_width="180dp"
+            android:layout_height="70dp"
+            android:layout_below="@id/instructions_btn"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:text="Leaderboard"
+            android:textColor="#000"
+            app:backgroundTint="@color/colorAccent">
+
+        </com.google.android.material.button.MaterialButton>
+
+
+    </LinearLayout>
+
+</RelativeLayout>
