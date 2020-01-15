@@ -1,6 +1,7 @@
 package com.siv.wordsearch20;
 
 import android.content.DialogInterface;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,6 +16,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.textfield.TextInputEditText;
+import com.siv.wordsearch20.Database.LeaderboardDatabase;
+import com.siv.wordsearch20.Database.LeaderboardEntity;
 import com.siv.wordsearch20.GridView.Grid;
 import com.siv.wordsearch20.Model.Word;
 import com.siv.wordsearch20.StopWatch.StopWatch;
@@ -39,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
     public WordAdapter wordAdapter;
 
     public StopWatch stopwatch;
+
+    List<LeaderboardEntity> leaderboardList;
 
     private char[][] letters  = {
 
@@ -201,6 +207,8 @@ public class MainActivity extends AppCompatActivity {
 
                     final View dialogView = LayoutInflater.from(MainActivity.this).inflate(R.layout.custom_md_alertdialog, null);
 
+                    TextInputEditText nameEditText = dialogView.findViewById(R.id.name_edittext);
+
                     MaterialAlertDialogBuilder scoreDialogBuilder = new MaterialAlertDialogBuilder(MainActivity.this);
                     scoreDialogBuilder.setTitle("Congratulations!");
                     scoreDialogBuilder.setView(dialogView);
@@ -210,6 +218,13 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             // Do nothing.
+
+                            String name = nameEditText.getText().toString().trim();
+
+                            if (!name.isEmpty()) {
+                                addToLeaderboard(name, stopwatchText.getText().toString());
+                            }
+
                         }
                     });
 
@@ -221,6 +236,41 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void addToLeaderboard(String name, String timestamp) {
+
+        class AddToLeaderboardTask extends AsyncTask<Void, Void, Void> {
+
+            @Override
+            protected Void doInBackground(Void... voids) {
+
+                LeaderboardEntity playerSession = new LeaderboardEntity();
+                playerSession.setName(name);
+                playerSession.setTimestamp(timestamp);
+
+                LeaderboardDatabase db = LeaderboardDatabase.getDatabase(MainActivity.this);
+                db.leaderboardDao().insert(playerSession);
+
+                leaderboardList = db.leaderboardDao().getLeaderboardData();
+
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                super.onPostExecute(aVoid);
+                finish();
+
+                Toast.makeText(MainActivity.this, "Saved!", Toast.LENGTH_SHORT).show();
+
+                Log.d("ROOM", "onPostExecute: LEADERBOARD DATA : " + leaderboardList.get(0).getName() + " : " + leaderboardList.get(0).getTimestamp());
+            }
+        }
+
+
+        AddToLeaderboardTask task = new AddToLeaderboardTask();
+        task.execute();
     }
 
 

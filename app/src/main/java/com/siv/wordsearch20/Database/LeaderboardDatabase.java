@@ -16,7 +16,7 @@ public abstract class LeaderboardDatabase extends RoomDatabase {
     static final ExecutorService databaseWriteExecutor = Executors.newFixedThreadPool(NUM_OF_THREADS);
     private static volatile LeaderboardDatabase INSTANCE;
 
-    static LeaderboardDatabase getDatabase(final Context context) {
+    public static LeaderboardDatabase getDatabase(final Context context) {
         if (INSTANCE == null) {
             synchronized (LeaderboardDatabase.class) {
                 if (INSTANCE == null) {
