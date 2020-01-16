@@ -20,6 +20,10 @@ public class LeaderboardEntity {
     @ColumnInfo(name = "Time")
     private String timestamp;
 
+    @NonNull
+    @ColumnInfo(name = "RawTime")
+    private int rawTime;
+
 
     public int getLid() {
         return lid;
@@ -45,5 +49,13 @@ public class LeaderboardEntity {
 
     public void setTimestamp(@NonNull String timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public int getRawTime() {
+        return rawTime;
+    }
+
+    public void setRawTime(int rawTime) {
+        this.rawTime = rawTime;
     }
 }

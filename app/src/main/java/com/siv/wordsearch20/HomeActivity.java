@@ -49,5 +49,12 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        leaderboard_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HomeActivity.this, LeaderBoardActivity.class));
+            }
+        });
+
     }
 }

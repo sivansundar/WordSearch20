@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
 
-    public ArrayList<String> wordList = new ArrayList<String>();
+    public ArrayList<String> wordList;
     public Context mContext;
 
     public WordAdapter(ArrayList<String> wordList, Context mContext) {

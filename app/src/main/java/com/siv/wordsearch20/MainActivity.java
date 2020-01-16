@@ -245,9 +245,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             protected Void doInBackground(Void... voids) {
 
+                String rawTime = timestamp.replace(":", "");
+
+                Log.d("TAG", "doInBackground: RAW TIME : " + rawTime);
+                Log.d("TAG", "doInBackground: ORIGINAL TIME : " + timestamp);
+
                 LeaderboardEntity playerSession = new LeaderboardEntity();
                 playerSession.setName(name);
                 playerSession.setTimestamp(timestamp);
+                playerSession.setRawTime(Integer.valueOf(rawTime));
 
                 LeaderboardDatabase db = LeaderboardDatabase.getDatabase(MainActivity.this);
                 db.leaderboardDao().insert(playerSession);
@@ -264,7 +270,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Toast.makeText(MainActivity.this, "Saved!", Toast.LENGTH_SHORT).show();
 
-                Log.d("ROOM", "onPostExecute: LEADERBOARD DATA : " + leaderboardList.get(0).getName() + " : " + leaderboardList.get(0).getTimestamp());
+//                Log.d("ROOM", "onPostExecute: LEADERBOARD DATA : " + leaderboardList.get(0).getName() + " : " + leaderboardList.get(0).getTimestamp());
             }
         }
 

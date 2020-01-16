@@ -12,7 +12,7 @@ public interface LeaderboardDao {
     @Insert
     void insert(LeaderboardEntity leaderboardEntity);
 
-    @Query("SELECT * FROM leaderboard ORDER BY Id ASC")
+    @Query("SELECT * FROM leaderboard ORDER BY RawTime ASC")
     List<LeaderboardEntity> getLeaderboardData();
 
 
