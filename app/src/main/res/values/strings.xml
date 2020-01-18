@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">WordSearch20</string>
+    <string name="instructions">Find all the given words in the shortest timespan to top the leaderboard.
+        Swipe over the letters to select a word.</string>
+
+    <string name="aboutString">Hi!</string>
 </resources>

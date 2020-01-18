@@ -50,17 +50,17 @@ public class EasyLetters {
             {'C', 'C', 'V', 'A', 'R', 'I', 'A', 'M', 'L', 'E'}//  9
 
 
-            //Y Swift - 0 , 1, 4, 5
+            //Swift - 0 , 1, 4, 5
 
-            //Y Java - 4, 1, 7, 1
+            //Java - 4, 1, 7, 1
 
-            //Y Kotlin - 2, 1, 7, 6
+            //Kotlin - 2, 1, 7, 6
 
-            //Y ObjectiveC - 0, 0, 9, 0
+            //ObjectiveC - 0, 0, 9, 0
 
-            //Y Variable - 0, 2, 0, 9
+            //Variable - 0, 2, 0, 9
 
-            //Y Mobile - 3, 7, 8, 7
+            //Mobile - 3, 7, 8, 7
     };
 
 

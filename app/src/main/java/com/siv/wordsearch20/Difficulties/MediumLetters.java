@@ -54,25 +54,25 @@ public class MediumLetters {
 
             //Shopify - 2 0 8 0
             //Swift - 8 3 8 7
-            //Y Java - 1 3 4 6
-            // Variable - 1 2 8 9
-            //Y Mobile - 3 9 8 9
+            //Java - 1 3 4 6
+            //Variable - 1 2 8 9
+            //Mobile - 3 9 8 9
             //Google - 0 0 5 5
-            //Y ObjectiveC - 9 0 9 9
-            //Y Kotlin - 2 1 7 6
+            //ObjectiveC - 9 0 9 9
+            //Kotlin - 2 1 7 6
 
 
-            //Y Swift - 0 , 1, 4, 5
+            //Swift - 0 , 1, 4, 5
 
-            //Y Java - 5 7 8 7
+            //Java - 5 7 8 7
 
-            //Y Kotlin - 2, 1, 7, 6
+            //Kotlin - 2, 1, 7, 6
 
-            //Y ObjectiveC - 0,0,9,9
+            //ObjectiveC - 0,0,9,9
 
-            //Y MAC - 9 2 9 4
+            //MAC - 9 2 9 4
 
-            //Y Mobile - 4,1,9,1
+            //Mobile - 4,1,9,1
 
             //Facebook 0 1 0 8
             //Shopify 1 0 7 0

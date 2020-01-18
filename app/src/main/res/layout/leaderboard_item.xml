@@ -3,22 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="5dp">
+
+    >
 
     <com.google.android.material.card.MaterialCardView
+        android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         app:cardBackgroundColor="@color/colorAccent"
         app:cardCornerRadius="4dp"
-        app:cardElevation="10dp"
-        app:contentPadding="10dp">
+        app:cardElevation="10dp">
 
         <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:padding="10dp"
             android:orientation="horizontal">
 
             <TextView
+                android:gravity="center"
                 android:id="@+id/lid_text"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -26,26 +30,29 @@
                 android:text="1"
                 android:textAlignment="center"
                 android:textColor="#000"
-                android:textSize="18sp">
+                android:textSize="20sp">
 
             </TextView>
 
             <TextView
+                android:gravity="center"
                 android:id="@+id/lname_text"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:textAlignment="textStart"
                 android:text="Sivansssssssssss"
-                android:textAlignment="center"
                 android:textColor="#000"
-                android:textSize="18sp">
+                android:textSize="20sp">
 
             </TextView>
 
             <TextView
+                android:layout_height="match_parent"
                 android:id="@+id/ltime_text"
+                android:gravity="center"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:textSize="20sp"
                 android:layout_weight="1"
                 android:text="00:00"
                 android:textAlignment="center"

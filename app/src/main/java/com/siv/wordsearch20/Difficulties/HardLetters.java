@@ -55,20 +55,21 @@ public class HardLetters {
             {'C', 'E', 'M', 'A', 'C', 'I', 'A', 'M', 'L', 'C'}//  9
 
 
-            //Y Swift - 8 2 8 6
+            //Swift - 8 2 8 6
 
-            //Y Java - 5 7 8 7
+            //Java - 5 7 8 7
 
-            //Y Kotlin - 2, 1, 7, 6
+            //Kotlin - 2, 1, 7, 6
 
-            //Y ObjectiveC - 0,0,9,9
+            //ObjectiveC - 0,0,9,9
 
-            //Y MAC - 9 2 9 4
+            //MAC - 9 2 9 4
 
-            //Y Mobile - 4,1,9,1
+            //Mobile - 4,1,9,1
 
             //Facebook 0 1 0 8
             //Shopify 1 0 7 0
+
             //Google 1 3 1 8
             //Android 2 9 8 9
     };

@@ -45,49 +45,45 @@ public class MainActivity extends AppCompatActivity {
     public MediumLetters mediumLettersObject;
     public HardLetters hardLettersObject;
     public List<String> easyWords, mediumWords, hardWords;
-    public TextView scoreText;
-    public TextView gamecounterText;
+    public List<LeaderboardEntity> leaderboardList;
+    public TextView scoreText, gamecounterText, stopwatchText;
+    public MaterialCheckBox material_checkbox;
     public String currentDifficulty;
     public MaterialButton easyButton, mediumButton, hardButton;
-    public TextView stopwatchText;
+    public StopWatch stopwatch;
+    public Random rand;
 
     public RecyclerView wordsRecyclerView;
     public WordAdapter wordAdapter;
 
-    public StopWatch stopwatch;
+
     int score = 0, topscore;
-    MaterialCheckBox material_checkbox;
+    private List<char[][]> easyLetterArray, mediumLettersArray, hardLetterArray;
 
-
-    List<LeaderboardEntity> leaderboardList;
     boolean isShareClicked;
     boolean difficultyStatus = false;
     boolean infoStatus;
-    SharedPreferences sharedpreferences;
-    SharedPreferences.Editor editor;
-    private List<char[][]> easyLetterArray, mediumLettersArray, hardLetterArray;
+    private SharedPreferences sharedpreferences;
+    private SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        gamecounterText = findViewById(R.id.gamecounter_text);
+
         wordsRecyclerView = findViewById(R.id.wordListRecyclerView);
         wordsRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(3, LinearLayoutManager.VERTICAL));
 
-        scoreText = findViewById(R.id.score);
+        gamecounterText = findViewById(R.id.gamecounter_text);
         stopwatchText = findViewById(R.id.stopWatch_text);
+        scoreText = findViewById(R.id.score);
         wordsGrid = findViewById(R.id.wordsGrid);
-
 
         isShareClicked = false;
         sharedpreferences = getSharedPreferences("pref", Context.MODE_PRIVATE);
 
         editor = sharedpreferences.edit();
-        /*editor.putBoolean("info", true);
-        editor.commit();
-        */
 
         infoStatus = sharedpreferences.getBoolean("info", true);
         Log.d("TAG", "onCreate: infoStatus : " + infoStatus);
@@ -97,12 +93,12 @@ public class MainActivity extends AppCompatActivity {
 
         initDifficultyDialogView(difficultyDialog);
 
-        Random rand = new Random();
+        rand = new Random();
 
 
         MaterialAlertDialogBuilder difficultyDialogBuilder = new MaterialAlertDialogBuilder(MainActivity.this);
         difficultyDialogBuilder.setTitle("Choose Difficulty");
-        difficultyDialogBuilder.setMessage("You took to complete searching.");
+        difficultyDialogBuilder.setMessage("Pick a difficulty level to begin with.");
         difficultyDialogBuilder.setView(difficultyDialog);
         difficultyDialogBuilder.setOnCancelListener(new DialogInterface.OnCancelListener() {
             @Override
@@ -300,8 +296,6 @@ public class MainActivity extends AppCompatActivity {
                             if (!name.isEmpty()) {
                                 addToLeaderboard(name, stopwatchText.getText().toString());
 
-                                //Alert to share on social media
-
                                 leaderboardOrSharePrompt();
 
 
@@ -309,12 +303,7 @@ public class MainActivity extends AppCompatActivity {
 
                         }
                     });
-                    scoreDialogBuilder.setNeutralButton("Share", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
 
-                        }
-                    });
                     scoreDialogBuilder.setCancelable(false);
 
                     AlertDialog scoreDialog = scoreDialogBuilder.create();
@@ -376,31 +365,35 @@ public class MainActivity extends AppCompatActivity {
 
         } else {
 
-            new CountDownTimer(3000, 1000) {
-
-                @Override
-                public void onTick(long l) {
-                    long time = l + 1000;
-                    Log.d("Tick", "onTick: " + time);
-                    gamecounterText.setVisibility(View.VISIBLE);
-                    Toast.makeText(MainActivity.this, "Get Ready : " + l / 1000, Toast.LENGTH_SHORT).show();
-                    Log.d("Ready", "onTick: Get Ready : \" + l/1000");
-                    gamecounterText.setText("Your game will begin in \n" + time / 1000);
-                }
-
-                @Override
-                public void onFinish() {
-                    gamecounterText.setVisibility(View.GONE);
-                    wordsRecyclerView.setVisibility(View.VISIBLE);
-                    scoreText.setVisibility(View.VISIBLE);
-                    wordsGrid.setVisibility(View.VISIBLE);
-                    Toast.makeText(MainActivity.this, "GO!", Toast.LENGTH_SHORT).show();
-                    startStopWatch();
-
-                }
-            }.start();
+            fireGameWithCountdown();
 
         }
+    }
+
+    private void fireGameWithCountdown() {
+        new CountDownTimer(3000, 1000) {
+
+            @Override
+            public void onTick(long l) {
+                long time = l + 1000;
+                Log.d("Tick", "onTick: " + time);
+                gamecounterText.setVisibility(View.VISIBLE);
+                Toast.makeText(MainActivity.this, "Get Ready : " + l / 1000, Toast.LENGTH_SHORT).show();
+                Log.d("Ready", "onTick: Get Ready : \" + l/1000");
+                gamecounterText.setText("Your game will begin in \n" + time / 1000);
+            }
+
+            @Override
+            public void onFinish() {
+                gamecounterText.setVisibility(View.GONE);
+                wordsRecyclerView.setVisibility(View.VISIBLE);
+                scoreText.setVisibility(View.VISIBLE);
+                wordsGrid.setVisibility(View.VISIBLE);
+                Toast.makeText(MainActivity.this, "GO!", Toast.LENGTH_SHORT).show();
+                startStopWatch();
+
+            }
+        }.start();
     }
 
     private void fireInstructionsDialog() {
@@ -428,12 +421,11 @@ public class MainActivity extends AppCompatActivity {
         MaterialAlertDialogBuilder scoreDialogBuilder = new MaterialAlertDialogBuilder(MainActivity.this);
         scoreDialogBuilder.setTitle("Instructions.");
         scoreDialogBuilder.setView(material_checkboxView);
-        scoreDialogBuilder.setMessage("Find all the given words in the shortest timespan to top the leaderboard. \nSwipe over the letters to select a word.");
+        scoreDialogBuilder.setMessage(R.string.instructions);
         scoreDialogBuilder.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                startStopWatch();
-
+                fireGameWithCountdown();
             }
         });
         scoreDialogBuilder.setCancelable(false);
@@ -442,19 +434,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    @Override
-    public void onRestoreInstanceState(Bundle savedInstanceState) {
-        Log.d("SAVE", "onRestoreInstanceState: RESTORE ACTIVATED");
-        String difStatus = savedInstanceState.getString("difStatus");
-        Log.d("SAVE", "onRestoreInstanceState: RESTORE : " + difStatus);
-
-
-        super.onRestoreInstanceState(savedInstanceState);
-
-    }
 
     private void pickHardGrid(int randomGrid) {
-        switch (0) {
+        switch (randomGrid) {
             case 0:
 
                 wordsGrid.setWords(
@@ -501,7 +483,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void pickMediumGrid(int randomGrid) {
 
-        switch (1) {
+        switch (randomGrid) {
             case 0:
                 wordsGrid.setWords(
                         new Word("SWIFT", false, 0, 4, 0, 8),
@@ -516,14 +498,6 @@ public class MainActivity extends AppCompatActivity {
                 wordsGrid.setLetters(mediumLettersArray.get(0));
                 break;
 
-            //Y Swift - 0 4 0 8
-            //Y Java - 1 4 4 4
-            // Variable - 1 3 8 3
-            //Y Mobile - 1 8 5 8
-            //Y ObjectiveC - 0 0 9 0
-            //Y Kotlin - 7 4 7 9
-            //Shopify - 0 9 0 5
-            //Google - 8 1 8 6
 
             case 1:
                 wordsGrid.setWords(
@@ -632,7 +606,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Toast.makeText(MainActivity.this, "Saved!", Toast.LENGTH_SHORT).show();
 
-//                Log.d("ROOM", "onPostExecute: LEADERBOARD DATA : " + leaderboardList.get(0).getName() + " : " + leaderboardList.get(0).getTimestamp());
+
             }
         }
 
