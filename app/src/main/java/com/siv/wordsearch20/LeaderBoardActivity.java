@@ -1,5 +1,6 @@
 package com.siv.wordsearch20;
 
+import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -41,6 +42,7 @@ public class LeaderBoardActivity extends AppCompatActivity {
 
         class GetLeaderBoardDataAsync extends AsyncTask<Void, Void, Void> {
 
+            @SuppressLint("WrongThread")
             @Override
             protected Void doInBackground(Void... voids) {
                 db = LeaderboardDatabase.getDatabase(LeaderBoardActivity.this);

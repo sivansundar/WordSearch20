@@ -54,7 +54,33 @@
 
         </com.google.android.material.button.MaterialButton>
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/about_btn"
+            android:layout_width="180dp"
+            android:layout_height="70dp"
+            android:layout_below="@id/leaderboard_btn"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:text="About"
+            android:textColor="#000"
+            app:backgroundTint="@color/colorAccent">
+
+        </com.google.android.material.button.MaterialButton>
+
 
     </LinearLayout>
 
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"
+        android:text="WordSearch20"
+        android:textColor="#FFF"
+        android:textSize="16sp"
+        android:textStyle="bold">
+
+    </TextView>
 </RelativeLayout>
