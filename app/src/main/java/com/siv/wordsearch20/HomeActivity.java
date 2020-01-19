@@ -2,9 +2,13 @@ package com.siv.wordsearch20;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,7 +30,7 @@ public class HomeActivity extends AppCompatActivity {
         leaderboard_button = findViewById(R.id.leaderboard_btn);
         about_button = findViewById(R.id.about_btn);
 
-        final View aboutAlertView = LayoutInflater.from(HomeActivity.this).inflate(R.layout.about_alert_view, null);
+
 
 
         play_button.setOnClickListener(new View.OnClickListener() {
@@ -64,8 +68,40 @@ public class HomeActivity extends AppCompatActivity {
         about_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                final View aboutAlertView = LayoutInflater.from(HomeActivity.this).inflate(R.layout.about_alert_view, null);
+                TextView aboutText = aboutAlertView.findViewById(R.id.about_text);
+                ImageButton twitterButton = aboutAlertView.findViewById(R.id.twitterButton);
+                ImageButton githubButton = aboutAlertView.findViewById(R.id.githubButton);
+
+                twitterButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        try {
+                            Intent intent = new Intent(Intent.ACTION_VIEW,
+                                    Uri.parse("twitter://user?screen_name=sivansundar"));
+                            startActivity(intent);
+                        } catch (Exception e) {
+                            startActivity(new Intent(Intent.ACTION_VIEW,
+                                    Uri.parse("https://twitter.com/sivansundar")));
+                        }
+                    }
+                });
+
+                githubButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        startActivity(new Intent(Intent.ACTION_VIEW,
+                                Uri.parse("https://github.com/sivansundar")));
+                    }
+                });
+
+                aboutText.setMovementMethod(LinkMovementMethod.getInstance());
+
                 MaterialAlertDialogBuilder materialAlertDialogBuilder = new MaterialAlertDialogBuilder(HomeActivity.this);
+                materialAlertDialogBuilder.setTitle("About");
                 materialAlertDialogBuilder.setView(aboutAlertView);
+
+                materialAlertDialogBuilder.setCancelable(true);
                 materialAlertDialogBuilder.create().show();
             }
         });

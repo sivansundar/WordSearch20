@@ -3,7 +3,9 @@
     <string name="instructions">Find all the given words in the shortest timespan to top the leaderboard.
         Swipe over the letters to select a word.</string>
 
-    <string name="aboutString">WordSearch20 is an word search game in which the player must find a set of words from a grid of randomized letters.\n\nFinding the words in the shortest timespan will help you top the leaderboard. The grid view is a custom view built with letters being placed in a character array.\n\nThe leaderboard details are maintained using Room Persistence Library which is a part of the Android Jetpack components.\n\nThe logo for this application was customized using a Shopify application called \nHatchful - a simple logo maker and
-                                the UI components for this application were built using Googles Material Design Components.\n\n
+    <string name="aboutString">WordSearch20 is a word search game in which the player must find a set of words from a grid of randomized letters.\n\nFinding the words in the shortest timespan will help you top the leaderboard. The grid view is a custom view built with letters being placed in a character array.\n\nThe leaderboard details are maintained using Room Persistence Library which is a part of the Android Jetpack components.\n\nThe logo for this application was customized using a Shopify application called \n<a href="https://hatchful.shopify.com/">Hatchful</a> - a simple logo maker and
+                                the UI components for this application were built using Material Design Components.\n\n
                                 </string>
+
+    <string name="hatchfulLink"></string>
 </resources>

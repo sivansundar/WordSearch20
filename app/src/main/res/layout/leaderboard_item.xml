@@ -31,22 +31,35 @@
                 android:text="1"
                 android:textAlignment="center"
                 android:textColor="#000"
-                android:textSize="20sp">
+                android:textSize="16sp">
 
             </TextView>
 
             <TextView
+
                 android:fontFamily="@font/roboto_mono"
                 android:id="@+id/lname_text"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:textAlignment="textStart"
-                android:text="Sivansssssssssss"
+                android:layout_weight="2"
+                android:justificationMode="inter_word"
+                android:text="Sivan Chakravarthy"
                 android:textColor="#000"
-                android:textSize="20sp">
+                android:textSize="16sp">
 
             </TextView>
+
+            <TextView
+                android:id="@+id/ldifficulty_text"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/roboto_mono"
+                android:gravity="center"
+                android:text="Easy"
+                android:textAlignment="center"
+                android:textColor="#000"
+                android:textSize="16sp"></TextView>
 
             <TextView
                 android:fontFamily="@font/roboto_mono"
@@ -54,7 +67,7 @@
                 android:id="@+id/ltime_text"
                 android:gravity="center"
                 android:layout_width="0dp"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:layout_weight="1"
                 android:text="00:00"
                 android:textAlignment="center"

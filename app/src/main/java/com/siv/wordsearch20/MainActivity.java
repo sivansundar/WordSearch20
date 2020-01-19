@@ -230,7 +230,7 @@ public class MainActivity extends AppCompatActivity {
                         if (easyWords.contains(word)) {
                             topscore = 6;
 
-                            Toast.makeText(MainActivity.this, word + " found : " + easyWords.indexOf(word), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "The word '" + word + "'was found", Toast.LENGTH_SHORT).show();
                             score++;
                             scoreText.setText("Score : " + score);
 
@@ -246,7 +246,7 @@ public class MainActivity extends AppCompatActivity {
                         if (mediumWords.contains(word)) {
                             topscore = 8;
 
-                            Toast.makeText(MainActivity.this, word + " found : " + mediumWords.indexOf(word), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "The word '" + word + "'was found", Toast.LENGTH_SHORT).show();
                             score++;
                             scoreText.setText("Score : " + score);
 
@@ -261,7 +261,7 @@ public class MainActivity extends AppCompatActivity {
                         if (hardWords.contains(word)) {
                             topscore = 10;
 
-                            Toast.makeText(MainActivity.this, word + " found : " + hardWords.indexOf(word), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "The word '" + word + "'was found", Toast.LENGTH_SHORT).show();
                             score++;
                             scoreText.setText("Score : " + score);
 
@@ -361,7 +361,7 @@ public class MainActivity extends AppCompatActivity {
 
             fireInstructionsDialog();
 
-            //Add a customview with a checkbox and change the value of the shared pref when chosen.
+
 
         } else {
 
@@ -378,7 +378,6 @@ public class MainActivity extends AppCompatActivity {
                 long time = l + 1000;
                 Log.d("Tick", "onTick: " + time);
                 gamecounterText.setVisibility(View.VISIBLE);
-                Toast.makeText(MainActivity.this, "Get Ready : " + l / 1000, Toast.LENGTH_SHORT).show();
                 Log.d("Ready", "onTick: Get Ready : \" + l/1000");
                 gamecounterText.setText("Your game will begin in \n" + time / 1000);
             }
@@ -418,18 +417,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        MaterialAlertDialogBuilder scoreDialogBuilder = new MaterialAlertDialogBuilder(MainActivity.this);
-        scoreDialogBuilder.setTitle("Instructions.");
-        scoreDialogBuilder.setView(material_checkboxView);
-        scoreDialogBuilder.setMessage(R.string.instructions);
-        scoreDialogBuilder.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
+        MaterialAlertDialogBuilder instructionsDialogBuilder = new MaterialAlertDialogBuilder(MainActivity.this);
+        instructionsDialogBuilder.setTitle("Instructions.");
+        instructionsDialogBuilder.setView(material_checkboxView);
+        instructionsDialogBuilder.setMessage(R.string.instructions);
+        instructionsDialogBuilder.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 fireGameWithCountdown();
             }
         });
-        scoreDialogBuilder.setCancelable(false);
-        scoreDialogBuilder.create().show();
+        instructionsDialogBuilder.setCancelable(false);
+        instructionsDialogBuilder.create().show();
 
     }
 
@@ -455,7 +454,6 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case 1:
-                //Configure for Android and change Swift positions
                 wordsGrid.setWords(
                         new Word("SWIFT", false, 8, 2, 8, 6),
                         new Word("JAVA", false, 5, 7, 8, 7),
@@ -590,6 +588,7 @@ public class MainActivity extends AppCompatActivity {
 
                 LeaderboardEntity playerSession = new LeaderboardEntity();
                 playerSession.setName(name);
+                playerSession.setDifficulty(currentDifficulty);
                 playerSession.setTimestamp(timestamp);
                 playerSession.setRawTime(Integer.valueOf(rawTime));
 

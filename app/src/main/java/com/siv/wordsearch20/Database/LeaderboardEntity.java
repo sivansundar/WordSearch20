@@ -17,6 +17,10 @@ public class LeaderboardEntity {
     private String name;
 
     @NonNull
+    @ColumnInfo(name = "difficulty")
+    private String difficulty;
+
+    @NonNull
     @ColumnInfo(name = "Time")
     private String timestamp;
 
@@ -40,6 +44,15 @@ public class LeaderboardEntity {
 
     public void setName(@NonNull String name) {
         this.name = name;
+    }
+
+    @NonNull
+    public String getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(@NonNull String difficulty) {
+        this.difficulty = difficulty;
     }
 
     @NonNull

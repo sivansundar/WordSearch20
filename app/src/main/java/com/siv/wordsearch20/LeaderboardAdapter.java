@@ -39,6 +39,7 @@ public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.
         holder.leaderboardID_text.setText(String.valueOf(position + 1));
         holder.leaderboardName_text.setText(leaderboardData.get(position).getName());
         holder.leaderboardTime_text.setText(leaderboardData.get(position).getTimestamp());
+        holder.leaderboardDifficulty_text.setText(leaderboardData.get(position).getDifficulty());
     }
 
     @Override
@@ -52,6 +53,8 @@ public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.
         public TextView leaderboardID_text;
         public TextView leaderboardName_text;
         public TextView leaderboardTime_text;
+        public TextView leaderboardDifficulty_text;
+
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -60,6 +63,7 @@ public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.
             leaderboardID_text = itemView.findViewById(R.id.lid_text);
             leaderboardName_text = itemView.findViewById(R.id.lname_text);
             leaderboardTime_text = itemView.findViewById(R.id.ltime_text);
+            leaderboardDifficulty_text = itemView.findViewById(R.id.ldifficulty_text);
 
 
         }
