@@ -7,7 +7,7 @@ This is a simple word search game developed as a submission to the Mobile Develo
 WordSearch20 is a word search game in which the player must find a set of words from a grid of randomized letters.
 Finding the words in the shortest timespan will help you top the leaderboard. 
 The grid view is a custom view built with letters being placed in a character array. To play this game, choose a difficulty mode and begin. You will be presented with a randomized grid everytime you begin the game. 
-Find the set of words by swiping over the letters. Once you have done fining all the words, enter your name to get added to the leaderboard.
+Find the set of words by swiping over the letters. Once you have done finding all the words, enter your name to get added to the leaderboard.
 You can then view the leaderboard, or share your best time on social media by clicking on the share button.
 
 The leaderboard details are maintained using Room Persistence Library which is a part of the Android Jetpack components.
