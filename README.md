@@ -27,10 +27,15 @@ The logo for this application was customized using a Shopify application called 
 
 * [Hatchful](https://hatchful.shopify.com/) - A shopify application to build simple and rich logos.
 
+## Instructions
+
+1. Click on the play button and choose a difficulty mode.
+
+2. In the randomized grid, swipe over the letters to find the words.
+
+3. Once you are done finding all the words, enter your name to be added on to the leaderboard. 
 
 ## Screenshots
-
-
 
 <img src="https://user-images.githubusercontent.com/10433759/72681200-3e948a80-3ae7-11ea-98ab-eee34fe1c1e5.png" width="250" hspace="20"/><img src="https://user-images.githubusercontent.com/10433759/72681201-3f2d2100-3ae7-11ea-9dc1-c79ff3242b86.png" width="250" hspace="20"/><img src="https://user-images.githubusercontent.com/10433759/72681202-3f2d2100-3ae7-11ea-9fbf-65e0d214a51c.png" width="250" hspace="20"/>
 <img src="https://user-images.githubusercontent.com/10433759/72681203-3f2d2100-3ae7-11ea-91ee-9f381b44e15a.png" width="250" hspace="20"/><img src="https://user-images.githubusercontent.com/10433759/72681477-06db1200-3aea-11ea-9725-49a7d89d0f5e.png" width="250" hspace="20"/><img src="https://user-images.githubusercontent.com/10433759/72681205-3fc5b780-3ae7-11ea-8829-72576df65562.png" width="250" hspace="20"/>
