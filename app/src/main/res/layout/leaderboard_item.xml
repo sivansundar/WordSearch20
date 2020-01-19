@@ -22,6 +22,7 @@
             android:orientation="horizontal">
 
             <TextView
+                android:fontFamily="@font/roboto_mono"
                 android:gravity="center"
                 android:id="@+id/lid_text"
                 android:layout_width="0dp"
@@ -35,7 +36,7 @@
             </TextView>
 
             <TextView
-                android:gravity="center"
+                android:fontFamily="@font/roboto_mono"
                 android:id="@+id/lname_text"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -48,6 +49,7 @@
             </TextView>
 
             <TextView
+                android:fontFamily="@font/roboto_mono"
                 android:layout_height="match_parent"
                 android:id="@+id/ltime_text"
                 android:gravity="center"

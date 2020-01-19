@@ -561,6 +561,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startStopWatch() {
+
+
         stopwatch = new StopWatch();
         stopwatch.setTextView(stopwatchText);
         stopwatch.start();

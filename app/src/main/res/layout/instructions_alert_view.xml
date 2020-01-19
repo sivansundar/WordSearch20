@@ -4,6 +4,8 @@
     android:layout_height="match_parent">
 
     <com.google.android.material.checkbox.MaterialCheckBox
+        android:fontFamily="@font/roboto_mono"
+        android:padding="10dp"
         android:id="@+id/material_checkbox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

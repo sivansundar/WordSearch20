@@ -6,6 +6,7 @@
     android:padding="10dp">
 
     <ImageView
+        android:visibility="gone"
         android:id="@+id/profile_pic"
         android:layout_width="150dp"
         android:layout_height="100dp"
@@ -21,8 +22,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/profile_pic"
+        android:fontFamily="@font/roboto_mono"
+        android:gravity="fill_horizontal"
+        android:textColor="#000"
         android:text="@string/aboutString"
-        android:textSize="18sp"
+        android:textSize="14sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/profile_pic"
