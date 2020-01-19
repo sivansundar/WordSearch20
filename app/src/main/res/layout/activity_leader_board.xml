@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+
+    android:padding="15dp"
+    tools:context=".LeaderBoardActivity">
+
+    <TextView
+        android:id="@+id/leaderboard_title_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_mono"
+        android:text="Leaderboard"
+        android:textColor="#FFF"
+        android:textSize="32sp">
+
+    </TextView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="10dp"
+        android:background="#FAFAFAFA">
+
+    </View>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/leaderboard_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+</LinearLayout>
